@@ -22,5 +22,5 @@ Route::get('/', function () {
 
 /** Admin Panel */
 Route::prefix('')->name('panel.')->group(function($router) {
-    $router->get('', [MainController::class, 'index'])->name('feeds.index');
+    $router->get('feeds', [MainController::class, 'index'])->name('feeds.index');
 });

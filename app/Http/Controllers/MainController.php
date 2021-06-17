@@ -27,7 +27,8 @@ class MainController extends Controller
             News::firstOrCreate($feed);
         }
 
-        $items = News::all();
+        $items = News::orderBy('published_date')
+            ->paginate(10);
 
         return view('admin.pages.feed.index', compact('items'));
     }
