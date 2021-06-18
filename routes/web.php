@@ -19,8 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 /** Admin Panel */
 Route::prefix('')->name('panel.')->group(function($router) {
-    $router->get('feeds', [MainController::class, 'index'])->name('feeds.index');
+    $router->get('', [MainController::class, 'index'])->name('feeds.index');
+    $router->get('get-updates', [MainController::class, 'getUpdates'])->name('feeds.get.updates');
+
+    $router->get('requests', [MainController::class, 'requests'])->name('requests.index');
+
 });

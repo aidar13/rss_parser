@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'RSS_PARSER'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Almaty',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,9 +178,6 @@ return [
         // Laravel Feed Reader
         Vedmant\FeedReader\FeedReaderServiceProvider::class,
 
-        // willvincent/feeds
-        willvincent\Feeds\FeedsServiceProvider::class,
-
     ],
 
     /*
@@ -235,7 +232,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'FeedReader' => Vedmant\FeedReader\Facades\FeedReader::class,
-        'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
 
     ],
 

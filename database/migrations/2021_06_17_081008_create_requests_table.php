@@ -18,7 +18,7 @@ class CreateRequestsTable extends Migration
             $table->string('method');
             $table->string('url');
             $table->integer('response_code');
-            $table->text('response_body');
+            $table->longText('response_body');
             $table->timestamps();
         });
     }
