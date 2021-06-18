@@ -41,30 +41,31 @@ class GetUpdates extends Command
      */
     public function handle()
     {
-//        $url = 'http://static.feed.rbc.ru/rbc/logical/footer/news.rss';
-//        $f = FeedReader::read($url);
-//
-//        foreach ($f->get_items() as $item ){
-//            if(!News::where('link', $item->get_link())->first()) {
-//                $feed = [
-//                    'title' => $item->get_title(),
-//                    'link' => $item->get_link(),
-//                    'short_description' => $item->get_content(),
-//                    'published_date' => Carbon::parse($item->get_date())->format('d-m-Y H:i:s'),
-//                    'author' => $item->get_author() ? $item->get_author()->email : '',
+        $url = 'http://static.feed.rbc.ru/rbc/logical/footer/news.rss';
+        $f = FeedReader::read($url);
+
+        foreach ($f->get_items() as $item ){
+            if(!News::where('link', $item->get_link())->first()) {
+                $feed = [
+                    'title' => $item->get_title(),
+                    'link' => $item->get_link(),
+                    'short_description' => $item->get_content(),
+                    'published_date' => Carbon::parse($item->get_date())->format('d-m-Y H:i:s'),
+                    'author' => $item->get_author() ? $item->get_author()->email : '',
+                    'image' => ''
 //                    'image' => $item->get_enclosures()[0]->link ? $item->get_enclosures()[0]->link : '' //Error: ceil(): Argument #1 ($num) must be of type int|float, string given
-//                ];
-//
-//                News::create($feed);
-//            }
-//        }
-//
-//        Request::create([
-//            'method' => 'GET',
-//            'url' => $url,
-//            'response_code' => 200,
-//            'response_body' => $f,
-//        ]);
+                ];
+
+                News::create($feed);
+            }
+        }
+
+        Request::create([
+            'method' => 'GET',
+            'url' => $url,
+            'response_code' => 200,
+            'response_body' => $f,
+        ]);
 
         $this->info('News successfully updated.');
     }
